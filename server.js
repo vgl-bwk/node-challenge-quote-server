@@ -3,10 +3,11 @@ const { response } = require("express");
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const lodash = require("lodash");
 const express = require("express");
 const app = express();
-
 //load the quotes JSON
+
 const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
@@ -36,6 +37,10 @@ app.get("/quotes/search", function (request, response) {
   );
   response.send(termIncl);
 });
+app.get("/quotes/sample", function (request, response) {
+  response.send(lodash.sample(quotes));
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
